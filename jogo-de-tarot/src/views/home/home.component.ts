@@ -17,8 +17,8 @@ export class HomeComponent implements OnInit {
   imageBackCard!: string;
   name?: any;
   image?: any;
-  teste!: any;
-  valor!: any;
+
+  shufflerValue!: any;
 
   ngOnInit(): void {}
 
@@ -44,7 +44,8 @@ export class HomeComponent implements OnInit {
   }
 
   shuffleArray() {
-    this.teste = Math.floor(Math.random() * this.cards.length);
-    this.valor = this.cards[this.teste];
+    let shuffler = Math.floor(Math.random() * this.cards.length);
+    this.shufflerValue = this.cards[shuffler];
+    console.log(this.shufflerValue);
   }
 }
