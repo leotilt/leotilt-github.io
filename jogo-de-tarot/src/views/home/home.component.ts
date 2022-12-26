@@ -15,15 +15,18 @@ export class HomeComponent implements OnInit {
   cards!: Array<any>;
   imagesUrl!: string;
   imageBackCard!: string;
-  name!:string
+  name?: any;
+  image?: any;
 
-
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    
+  }
 
   updateData() {
     this.dataCards.getDataCards().subscribe((data) => {
       this.data = data;
       this.pointData();
+      this.concatURL()
     });
   }
 
@@ -31,10 +34,11 @@ export class HomeComponent implements OnInit {
     this.imageBackCard = this.data.imageBackCard;
     this.imagesUrl = this.data.imagesUrl;
     this.cards = this.data.cards;
-
-    this.cards[0].name = this.name
+    // this.name = this.cards[0].name;
   }
-
-
+ 
+ concatURL(){
+ this.image = this.imagesUrl.concat(this.cards[0].image)
+ } 
 
 }
