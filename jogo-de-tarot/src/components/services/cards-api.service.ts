@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class CardsAPIService {
   constructor(private http: HttpClient) {}
 
-  getCards(): Observable<Cards[]> {
+  getDataCards(): Observable<Cards[]> {
     return this.http.get<Cards[]>(
       'https://dentalclouddev.s3.amazonaws.com/challenge/tarot.json'
     );

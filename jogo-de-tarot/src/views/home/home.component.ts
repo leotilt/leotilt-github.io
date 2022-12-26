@@ -7,18 +7,21 @@ import { CardsAPIService } from 'src/components/services/cards-api.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  constructor(private cardsAPI: CardsAPIService) {}
-  card!: any;
+  constructor(private dataCards: CardsAPIService) {
+    this.updateData()
+  }
+  data!: any;
   cardName!: any;
-  cardUrl!: string;
+  imageBackCard!: string;
 
   ngOnInit(): void {
-    this.updateData();
+    
   }
 
   updateData() {
-    this.cardsAPI.getCards().subscribe((cards) => {
-      this.card = cards;
+    this.dataCards.getDataCards().subscribe((data) => {
+      this.data = data;
+      this.imageBackCard = this.data.imageBackCard 
     });
   }
 }
