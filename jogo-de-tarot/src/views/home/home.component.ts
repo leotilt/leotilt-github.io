@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   cards!: Array<any>;
   imagesUrl!: string;
   imageBackCard!: string;
-  name!:string
+  name?:any
 
 
   ngOnInit(): void {}
@@ -31,10 +31,6 @@ export class HomeComponent implements OnInit {
     this.imageBackCard = this.data.imageBackCard;
     this.imagesUrl = this.data.imagesUrl;
     this.cards = this.data.cards;
-
-    this.cards[0].name = this.name
+    this.name = this.cards[0].name
   }
-
-
-
 }
