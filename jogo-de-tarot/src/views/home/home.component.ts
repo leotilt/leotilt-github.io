@@ -17,6 +17,8 @@ export class HomeComponent implements OnInit {
   imageBackCard!: string;
   name?: any;
   image?: any;
+  teste!: any;
+  valor!: any;
 
   ngOnInit(): void {}
 
@@ -25,6 +27,7 @@ export class HomeComponent implements OnInit {
       this.data = data;
       this.pointData();
       this.concatURL();
+      this.shuffleArray();
     });
   }
 
@@ -38,5 +41,10 @@ export class HomeComponent implements OnInit {
   concatURL() {
     this.image = this.imagesUrl.concat(this.cards[0].image);
     this.name = this.cards[0].name;
+  }
+
+  shuffleArray() {
+    this.teste = Math.floor(Math.random() * this.cards.length);
+    this.valor = this.cards[this.teste];
   }
 }
