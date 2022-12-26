@@ -39,6 +39,7 @@ export class HomeComponent implements OnInit {
  
  concatURL(){
  this.image = this.imagesUrl.concat(this.cards[0].image)
+ this.name = this.cards[0].name
  } 
 
 }
