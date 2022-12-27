@@ -4,3 +4,8 @@
     align-items: center;
     justify-content: center;
 }
+.name{
+   
+    font-size:20px;
+    font-weight: bold;
+}

@@ -1,8 +1,9 @@
-<div class="card"  >
-  <!-- <img src="{{ imageBackCard }}" /> -->
-  <!-- <img src="{{ imagesUrl }}" /> -->
-  <!-- <img src="{{ cards }}" /> -->
-  <img src="{{ image }}" />
- <h1>{{name}}</h1>
- <button (click)="shuffleArray()"></button>
+<div class="card">
+  <!-- <img class="cardImage" (click)="shufflerCardsArray()" src="{{ image }}" />
+  <h1 class="name">{{ name }}</h1> -->
+  <ul>
+    <li *ngFor="let cards of cards">
+      {{cards.images}}, {{cards.name}}
+    </li>
+  </ul>
 </div>
