@@ -1,8 +1,11 @@
-<div class="card"  >
-  <!-- <img src="{{ imageBackCard }}" /> -->
-  <!-- <img src="{{ imagesUrl }}" /> -->
-  <!-- <img src="{{ cards }}" /> -->
-  <img src="{{ image }}" />
- <h1>{{name}}</h1>
- 
+<div class="card">
+  <ul>
+    <button id="cardFlip" (click)="showAllCards()">Play</button>
+    <button id="play" (click)="changeCardImages()">Virar Cartas</button>
+
+    <li class="homeCards" *ngFor="let allCard of allCards">
+      <img src="{{ allCard.url }}" />
+      <p>{{ allCard.name }}</p>
+    </li>
+  </ul>
 </div>

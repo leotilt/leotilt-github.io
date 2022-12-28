@@ -15,38 +15,56 @@ export class HomeComponent implements OnInit {
   cards!: Array<any>;
   imagesUrl!: string;
   imageBackCard!: string;
-  name?: any;
-  image?: any;
+  nameRandom?: string;
+  imageRandom?: string;
+
+  allCards!: any;
+
+  namesf!: any;
+  imagesf?: any;
 
   shufflerValue!: any;
 
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void {}
 
   updateData() {
     this.dataCards.getDataCards().subscribe((data) => {
       this.data = data;
-      this.pointData();
-      this.shuffleArray();
+      this.cards = this.data.cards;
+      this.imageBackCard = this.data.imageBackCard;
+      this.imagesUrl = this.data.imagesUrl;
+
+      this.shufflerCardsArray();
+      this.showAllCards();
     });
   }
 
-  pointData() {
-    this.imageBackCard = this.data.imageBackCard;
-    this.imagesUrl = this.data.imagesUrl;
-    this.cards = this.data.cards;
+  showAllCards() {
+    this.allCards = this.cards.map((card) => {
+      return {
+        url: this.imagesUrl + card.image,
+        name: card.name,
+      };
+    });
   }
 
-  concatURL() {
-    this.image = this.imagesUrl.concat(this.shufflerValue.image);
-    this.name = this.shufflerValue.name;
-    
+  changeCardImages() {
+    this.allCards = this.cards.map(() => {
+      return {
+        url: this.imageBackCard,
+        name: null,
+      };
+    });
   }
 
-  shuffleArray() {
-    let shuffler = Math.floor(Math.random() * this.cards.length);
-    this.shufflerValue = this.cards[shuffler];
-    this.concatURL()
+  concatShufflerValue() {
+    this.imageRandom = this.imagesUrl.concat(this.shufflerValue.image);
+    this.nameRandom = this.shufflerValue.name;
+  }
+
+  shufflerCardsArray() {
+    let random = Math.floor(Math.random() * this.cards.length);
+    this.shufflerValue = this.cards[random];
+    this.concatShufflerValue();
   }
 }
