@@ -2,7 +2,6 @@
   <ul>
     <button id="cardFlip" (click)="showAllCards()">Play</button>
     <button id="play" (click)="changeCardImages()">Virar Cartas</button>
-
     <li class="homeCards" *ngFor="let allCard of allCards">
       <img src="{{ allCard.url }}" />
       <p>{{ allCard.name }}</p>
