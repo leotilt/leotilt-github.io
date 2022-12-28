@@ -2,8 +2,9 @@
   <!-- <img class="cardImage" (click)="shufflerCardsArray()" src="{{ image }}" />
   <h1 class="name">{{ name }}</h1> -->
   <ul>
-    <li *ngFor="let cards of cards">
-      {{cards.images}}, {{cards.name}}
+    <li class="homeCards" *ngFor="let allCard of allCards">
+      <img src="{{ allCard.url }}" />
+      <p>{{ allCard.name }}</p>
     </li>
   </ul>
 </div>

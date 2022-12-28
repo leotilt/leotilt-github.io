@@ -1,11 +1,16 @@
-.card{
-    margin-top:30px;
-    display:flex;
-    align-items: center;
-    justify-content: center;
+.homeCards {
+  display: inline-block;
+  float: left;
+  margin: 0 10px;
 }
-.name{
-   
-    font-size:20px;
-    font-weight: bold;
+
+.card {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.name {
+  font-size: 20px;
+  font-weight: bold;
 }

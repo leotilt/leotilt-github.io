@@ -1,5 +1,3 @@
-import { TOUCH_BUFFER_MS } from '@angular/cdk/a11y/input-modality/input-modality-detector';
-import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { CardsAPIService } from 'src/components/services/cards-api.service';
 
@@ -17,11 +15,13 @@ export class HomeComponent implements OnInit {
   cards!: Array<any>;
   imagesUrl!: string;
   imageBackCard!: string;
-  name?: string;
-  image?: string;
+  nameRandom?: string;
+  imageRandom?: string;
+
+  allCards!: any;
 
   namesf!: any;
-  imagesf?: string[] = [];
+  imagesf?: any;
 
   shufflerValue!: any;
 
@@ -35,24 +35,22 @@ export class HomeComponent implements OnInit {
       this.imagesUrl = this.data.imagesUrl;
 
       this.shufflerCardsArray();
-      this.startTarotCards();
-      this.startTarotCards()
+      this.showAllCards();
     });
   }
 
-  startTarotCards() {
-     let suffix = this.shufflerValue.image
-     for(const suffixs of suffix){
-      const newUrl =`${this.imagesUrl}${suffixs}`;
-
-     console.log(newUrl)
-     }
-    }
- 
+  showAllCards() {
+    this.allCards = this.cards.map((card) => {
+      return {
+        url: this.imagesUrl + card.image,
+        name: card.name,
+      };
+    });
+  }
 
   concatShufflerValue() {
-    this.image = this.imagesUrl.concat(this.shufflerValue.image);
-    this.name = this.shufflerValue.name;
+    this.imageRandom = this.imagesUrl.concat(this.shufflerValue.image);
+    this.nameRandom = this.shufflerValue.name;
   }
 
   shufflerCardsArray() {
