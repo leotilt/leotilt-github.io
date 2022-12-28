@@ -25,6 +25,8 @@ export class HomeComponent implements OnInit {
 
   shufflerValue!: any;
 
+  selectedCard!: any;
+
   ngOnInit(): void {}
 
   updateData() {
@@ -42,7 +44,7 @@ export class HomeComponent implements OnInit {
   showAllCards() {
     this.allCards = this.cards.map((card) => {
       return {
-        url: this.imagesUrl + card.image,
+        image: this.imagesUrl + card.image,
         name: card.name,
       };
     });
@@ -66,5 +68,12 @@ export class HomeComponent implements OnInit {
     let random = Math.floor(Math.random() * this.cards.length);
     this.shufflerValue = this.cards[random];
     this.concatShufflerValue();
+  }
+
+  radomcards() {
+    const index = Math.floor(Math.random() * this.allCards.length);
+    const card = this.allCards[index];
+    this.allCards = [card];
+    this.selectedCard = card;
   }
 }
