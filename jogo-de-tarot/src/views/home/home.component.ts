@@ -48,6 +48,15 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  changeCardImages() {
+    this.allCards = this.cards.map(() => {
+      return {
+        url: this.imageBackCard,
+        name: null,
+      };
+    });
+  }
+
   concatShufflerValue() {
     this.imageRandom = this.imagesUrl.concat(this.shufflerValue.image);
     this.nameRandom = this.shufflerValue.name;

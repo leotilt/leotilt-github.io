@@ -1,7 +1,8 @@
 <div class="card">
-  <!-- <img class="cardImage" (click)="shufflerCardsArray()" src="{{ image }}" />
-  <h1 class="name">{{ name }}</h1> -->
   <ul>
+    <button id="cardFlip" (click)="showAllCards()">Play</button>
+    <button id="play" (click)="changeCardImages()">Virar Cartas</button>
+
     <li class="homeCards" *ngFor="let allCard of allCards">
       <img src="{{ allCard.url }}" />
       <p>{{ allCard.name }}</p>

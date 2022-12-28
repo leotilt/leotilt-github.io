@@ -1,6 +1,33 @@
+#play {
+  border: none;
+  position: absolute;
+  top: 0;
+  left: 200px;
+  right: 0;
+  bottom: 1;
+  margin: auto;
+  width: 5%;
+  height: 5%;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+#cardFlip {
+  border: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 1;
+  margin: auto;
+  width: 5%;
+  height: 5%;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
 .homeCards {
   display: inline-block;
-  float: left;
   margin: 0 10px;
 }
 
