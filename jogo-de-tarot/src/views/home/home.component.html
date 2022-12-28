@@ -1,7 +1,7 @@
 <div class="card">
   <ul>
     <button id="cardFlip" (click)="radomcards()">Play</button>
-    <button id="play" (click)="changeCardImages()">Virar Cartas</button>
+    <button id="play" (click)="showAllCards()">Novo Jogo</button>
     <li class="homeCards" *ngFor="let allCard of allCards">
       <img src="{{ allCard.image }}" />
       <p class="name">{{ allCard.name }}</p>

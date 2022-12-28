@@ -50,15 +50,6 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  changeCardImages() {
-    this.allCards = this.cards.map(() => {
-      return {
-        url: this.imageBackCard,
-        name: null,
-      };
-    });
-  }
-
   concatShufflerValue() {
     this.imageRandom = this.imagesUrl.concat(this.shufflerValue.image);
     this.nameRandom = this.shufflerValue.name;
@@ -68,6 +59,16 @@ export class HomeComponent implements OnInit {
     let random = Math.floor(Math.random() * this.cards.length);
     this.shufflerValue = this.cards[random];
     this.concatShufflerValue();
+  }
+
+  changeCardImages() {
+    this.allCards = this.cards.map(() => {
+      return {
+        url: this.imageBackCard,
+        name: null,
+      };
+    });
+    this.radomcards();
   }
 
   radomcards() {
