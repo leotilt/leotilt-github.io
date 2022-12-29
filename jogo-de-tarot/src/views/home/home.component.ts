@@ -18,14 +18,7 @@ export class HomeComponent implements OnInit {
   nameRandom?: string;
   imageRandom?: string;
 
-  allCards!: any;
-
-  namesf!: any;
-  imagesf?: any;
-
-  shufflerValue!: any;
-
-  selectedCard!: any;
+  valueCards!: any;
 
   ngOnInit(): void {}
 
@@ -35,14 +28,12 @@ export class HomeComponent implements OnInit {
       this.cards = this.data.cards;
       this.imageBackCard = this.data.imageBackCard;
       this.imagesUrl = this.data.imagesUrl;
-
-      this.shufflerCardsArray();
       this.showAllCards();
     });
   }
 
   showAllCards() {
-    this.allCards = this.cards.map((card) => {
+    this.valueCards = this.cards.map((card) => {
       return {
         image: this.imagesUrl + card.image,
         name: card.name,
@@ -50,31 +41,33 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  concatShufflerValue() {
-    this.imageRandom = this.imagesUrl.concat(this.shufflerValue.image);
-    this.nameRandom = this.shufflerValue.name;
-  }
-
-  shufflerCardsArray() {
-    let random = Math.floor(Math.random() * this.cards.length);
-    this.shufflerValue = this.cards[random];
-    this.concatShufflerValue();
-  }
-
   changeCardImages() {
-    this.allCards = this.cards.map(() => {
+    this.valueCards = this.cards.map(() => {
       return {
-        url: this.imageBackCard,
-        name: null,
+        image: this.imageBackCard,
       };
     });
-    this.radomcards();
+    setTimeout(() => {
+      this.radomCards();
+    }, 3000);
   }
 
-  radomcards() {
-    const index = Math.floor(Math.random() * this.allCards.length);
-    const card = this.allCards[index];
-    this.allCards = [card];
-    this.selectedCard = card;
+  radomCards() {
+    this.valueCards = this.data.cards.map(
+      (card: { image: string; name: any }) => {
+        return {
+          image: this.imagesUrl + card.image,
+          name: card.name,
+        };
+      }
+    );
+
+    const index = Math.floor(Math.random() * this.valueCards.length);
+    const card = this.valueCards[index];
+    this.valueCards = [card];
+  }
+
+  onClick() {
+    this.changeCardImages();
   }
 }
