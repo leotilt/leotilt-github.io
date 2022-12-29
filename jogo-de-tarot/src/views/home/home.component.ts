@@ -44,6 +44,7 @@ export class HomeComponent {
 
   imagesUrl!: string;
   imageBackCard!: string;
+
   //função updateData alimenta as variaveis fazendo o get no arquivo service onde contem o arquivo json, fazendo a requisição http
   updateData() {
     this.dataCards.getDataCards().subscribe((data) => {
