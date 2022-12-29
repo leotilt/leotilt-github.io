@@ -49,7 +49,7 @@ export class HomeComponent implements OnInit {
     });
     setTimeout(() => {
       this.radomCards();
-    }, 3000);
+    }, 2000);
   }
 
   radomCards() {
