@@ -45,7 +45,6 @@ export class HomeComponent {
   imagesUrl!: string;
   imageBackCard!: string;
 
-  //função updateData alimenta as variaveis fazendo o get no arquivo service onde contem o arquivo json, fazendo a requisição http
   updateData() {
     this.dataCards.getDataCards().subscribe((data) => {
       this.data = data;
@@ -55,7 +54,6 @@ export class HomeComponent {
       this.showAllCards();
     });
   }
-  //Função showAllCards, é chamada assim que a aplicação é iniciada, listando todas as cartas do array concatenando com o url
   showAllCards() {
     this.valueCards = this.cards.map((card) => {
       return {
@@ -64,7 +62,6 @@ export class HomeComponent {
       };
     });
   }
-  //Função changeCards, muda o valor do array para a parte de tras da carta, e depois 2 segundos chama a função radomCards
   changeCardImages() {
     this.valueCards = this.cards.map(() => {
       return {
@@ -75,16 +72,13 @@ export class HomeComponent {
       this.radomCards();
     }, 2000);
   }
-  //função radomCards mapeia o array retornando a imagem e o nome da carta gerado aleatoriamente pela função Math.radom
   radomCards() {
-    this.valueCards = this.data.cards.map(
-      (card: { image: string; name: any }) => {
-        return {
-          image: this.imagesUrl + card.image,
-          name: card.name,
-        };
-      }
-    );
+    this.valueCards = this.cards.map((card: { image: string; name: any }) => {
+      return {
+        image: this.imagesUrl + card.image,
+        name: card.name,
+      };
+    });
 
     const index = Math.floor(Math.random() * this.valueCards.length);
     const card = this.valueCards[index];
@@ -98,3 +92,8 @@ export class HomeComponent {
     this.showAllCards();
   }
 }
+
+//função radomCards mapeia o array retornando a imagem e o nome da carta gerado aleatoriamente pela função Math.radom
+//Função changeCards, muda o valor do array para a parte de tras da carta, e depois 2 segundos chama a função radomCards
+//Função showAllCards, é chamada assim que a aplicação é iniciada, listando todas as cartas do array concatenando com o url
+//função updateData alimenta as variaveis fazendo o get no arquivo service onde contem o arquivo json, fazendo a requisição http
