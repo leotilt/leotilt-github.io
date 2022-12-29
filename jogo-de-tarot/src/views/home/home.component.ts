@@ -1,3 +1,10 @@
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,
+} from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { CardsAPIService } from 'src/components/services/cards-api.service';
 
@@ -5,6 +12,25 @@ import { CardsAPIService } from 'src/components/services/cards-api.service';
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
+
+  animations: [
+    trigger('cardAnimation', [
+      state(
+        'fadeOut',
+        style({
+          opacity: 0,
+        })
+      ),
+      state(
+        'fadeIn',
+        style({
+          opacity: 1,
+        })
+      ),
+      transition('fadeOut => fadeIn', animate('500ms ease-in')),
+      transition('fadeIn => fadeOut', animate('500ms ease-out')),
+    ]),
+  ],
 })
 export class HomeComponent implements OnInit {
   constructor(private dataCards: CardsAPIService) {

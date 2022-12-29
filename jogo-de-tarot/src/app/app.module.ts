@@ -11,7 +11,6 @@ import { HomeComponent } from 'src/views/home/home.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 
-
 import { HttpClientModule } from '@angular/common/http';
 import { CardsAPIService } from 'src/components/services/cards-api.service';
 
@@ -24,6 +23,7 @@ import { CardsAPIService } from 'src/components/services/cards-api.service';
     BrowserAnimationsModule,
     MatToolbarModule,
     MatButtonModule,
+    BrowserAnimationsModule,
   ],
   providers: [HttpClientModule, CardsAPIService],
   bootstrap: [AppComponent],
