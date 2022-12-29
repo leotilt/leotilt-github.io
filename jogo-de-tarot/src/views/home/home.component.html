@@ -1,7 +1,7 @@
 <div class="card">
   <ul>
-    <button id="cardFlip" (click)="onClick()">Play</button>
-    <button id="play" (click)="showAllCards()">Novo Jogo</button>
+    <button id="cardFlip" (click)="onClickPlay()">Play</button>
+    <button id="play" (click)="onClickNewGame()">Novo Jogo</button>
     <li class="homeCards" *ngFor="let value of valueCards">
       <img src="{{ value.image }}" />
       <p class="name">{{ value.name }}</p>

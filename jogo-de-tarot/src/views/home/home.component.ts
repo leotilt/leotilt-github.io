@@ -5,7 +5,7 @@ import {
   animate,
   transition,
 } from '@angular/animations';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CardsAPIService } from 'src/components/services/cards-api.service';
 
 @Component({
@@ -32,22 +32,19 @@ import { CardsAPIService } from 'src/components/services/cards-api.service';
     ]),
   ],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
   constructor(private dataCards: CardsAPIService) {
     this.updateData();
   }
+
   data!: any;
 
   cards!: Array<any>;
+  valueCards!: Array<any>;
+
   imagesUrl!: string;
   imageBackCard!: string;
-  nameRandom?: string;
-  imageRandom?: string;
-
-  valueCards!: any;
-
-  ngOnInit(): void {}
-
+  //função updateData alimenta as variaveis fazendo o get no arquivo service onde contem o arquivo json, fazendo a requisição http
   updateData() {
     this.dataCards.getDataCards().subscribe((data) => {
       this.data = data;
@@ -57,7 +54,7 @@ export class HomeComponent implements OnInit {
       this.showAllCards();
     });
   }
-
+  //Função showAllCards, é chamada assim que a aplicação é iniciada, listando todas as cartas do array concatenando com o url
   showAllCards() {
     this.valueCards = this.cards.map((card) => {
       return {
@@ -66,7 +63,7 @@ export class HomeComponent implements OnInit {
       };
     });
   }
-
+  //Função changeCards, muda o valor do array para a parte de tras da carta, e depois 2 segundos chama a função radomCards
   changeCardImages() {
     this.valueCards = this.cards.map(() => {
       return {
@@ -77,7 +74,7 @@ export class HomeComponent implements OnInit {
       this.radomCards();
     }, 2000);
   }
-
+  //função radomCards mapeia o array retornando a imagem e o nome da carta gerado aleatoriamente pela função Math.radom
   radomCards() {
     this.valueCards = this.data.cards.map(
       (card: { image: string; name: any }) => {
@@ -92,8 +89,11 @@ export class HomeComponent implements OnInit {
     const card = this.valueCards[index];
     this.valueCards = [card];
   }
-
-  onClick() {
+  //Botoes
+  onClickPlay() {
     this.changeCardImages();
+  }
+  onClickNewGame() {
+    this.showAllCards();
   }
 }
